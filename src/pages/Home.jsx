@@ -6,7 +6,7 @@ const Home = ({ catalog }) => {
   const breakpointColumnsObj = {
     default: 3,
     1100: 3,
-    700: 2,
+    1024: 2,
     500: 1,
   };
 
@@ -32,7 +32,7 @@ const Home = ({ catalog }) => {
   return (
     <section className="bg-[url('/homeBackground.png')] w-full py-10">
       <div className="w-[90%] m-auto flex justify-between">
-        <div className="hidden md:block w-[15%]">
+        <div className="hidden md:block w-[18%]">
           <p className=" text-xl font-semibold mb-6">Каталог товаров</p>
           {catalog.map((item, index) => (
             <Link key={index} to={`/${item.url}`}>
@@ -42,7 +42,7 @@ const Home = ({ catalog }) => {
         </div>
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid gap-4 md:w-[80%]"
+          className="my-masonry-grid gap-4 md:w-[78%]"
           columnClassName="my-masonry-grid_column"
         >
           {items}
