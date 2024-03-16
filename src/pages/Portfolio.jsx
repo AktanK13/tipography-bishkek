@@ -1,7 +1,13 @@
 import React from "react";
+import Masonry from "react-masonry-css";
 
 const Portfolio = ({ catalog }) => {
-
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
   var items = catalog?.map((item, index) => (
     <div
       key={index}
@@ -19,7 +25,13 @@ const Portfolio = ({ catalog }) => {
   return (
     <section className="bg-[url('/homeBackground.png')] w-full py-10">
       <div className="w-[90%] m-auto">
-      {items}
+      <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid gap-4"
+          columnClassName="my-masonry-grid_column"
+        >
+          {items}
+        </Masonry>
       </div>
     </section>
   );

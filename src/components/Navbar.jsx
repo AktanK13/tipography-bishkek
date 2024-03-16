@@ -4,12 +4,16 @@ import { GrGallery } from "react-icons/gr";
 import { FaRegBuilding } from "react-icons/fa";
 import { RiContactsBookLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
+import logo from "../../public/assets/logo.png";
 import "../index.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 
 const Navbar = ({ routesData }) => {
   const [isSticky, setSticky] = useState(false);
-  const sortedData = [...routesData].sort((a, b) => a.name.localeCompare(b.name))
+  const { pathname } = useLocation();
+  const sortedData = [...routesData].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
   useEffect(() => {
     const handleScroll = () => {
       const stickyHeader = document.getElementById("myHeader");
@@ -31,9 +35,9 @@ const Navbar = ({ routesData }) => {
 
   return (
     <div>
-      <div className=" w-full h-[10vh] bg-[url('/background-header.jpg')]  bg-cover">
+      <div className=" w-full  h-[10vh] bg-[url('/background-header.jpg')]  bg-cover">
         <div className="w-full h-full bg-opacity-60  bg-[#000]  flex  justify-center items-center">
-          <h1 className=" text-2xl font-black text-white ">
+          <h1 className="xsm:text-2xl sm:text-2xl md:text-4xl xl:text-5xl font-black text-white ">
             ТИПОГРАФИЯ БИШКЕК
           </h1>
         </div>
@@ -41,17 +45,34 @@ const Navbar = ({ routesData }) => {
 
       <div className="" id="myHeader" />
       <div
-        className={`w-screen py-6 px-5 lg:px-64 bg-white flex justify-between shadow-md ${
+        className={`w-screen py-6 xsm:px-5 xl:px-24 bg-white flex justify-between shadow-md ${
           isSticky ? "mySticky" : ""
         }`}
       >
-        <span className="hidden md:flex text-lg font-semibold ">Material3</span>
+        <span className="hidden md:flex text-lg font-semibold ">
+        <Link to="/">
+          <img src={logo} alt="logo" className=" w-28 " />
+        </Link>
+        </span>
 
-        <ul className="hidden md:flex items-center space-x-5">
-          <li>Главная</li>
-          <li>Портфолио</li>
-          <li>О компании</li>
-          <li>Контакты</li>
+        <ul className="hidden md:flex items-center xsm:space-x-4 lg:space-x-8">
+          <Link to="/">
+            <li className={pathname === '/' ? 'font-bold' : ''}>Главная</li>
+          </Link>
+          <Link to="/portfolio">
+            <li className={pathname === '/portfolio' ? 'font-bold' : ''}>Портфолио</li>
+          </Link>
+          <Link to="/about">
+            <li className={pathname === '/about' ? 'font-bold' : ''}>О компании</li>
+          </Link>
+          <Link to="/contacts">
+            <li className={pathname === '/contacts' | pathname === '/contacts/' ? 'font-bold' : ''}>Контакты</li>
+          </Link>
+          <a href="/contacts/#contactus"
+            className="rounded-md border border-transparent bg-red-700 px-5 py-2 text-center font-medium text-white hover:bg-red-600"
+          >
+            НАПИСАТЬ НАМ
+          </a>
         </ul>
 
         {/* hamburger menu */}
@@ -88,18 +109,20 @@ const Navbar = ({ routesData }) => {
               </li>
             </Link>
 
-            <h4 className="text-white font-semibold pt-20 pb-6">Каталог товаров</h4>
-            {sortedData?.map((route, index) =>
-                <Link key={index} to={`/${route?.url}`}>
-                  <li className="flex justify-start items-center w-full py-4 px-10 border-b-[1px] text-white hover:bg-[#2b2b2b]">
-                    {route?.name}
-                  </li>
-                </Link>
-              )}
+            <h4 className="text-white font-semibold pt-20 pb-6">
+              Каталог товаров
+            </h4>
+            {sortedData?.map((route, index) => (
+              <Link key={index} to={`/${route?.url}`}>
+                <li className="flex justify-start items-center w-full py-4 px-10 border-b-[1px] text-white hover:bg-[#2b2b2b]">
+                  {route?.name}
+                </li>
+              </Link>
+            ))}
           </ul>
         </button>
 
-        <div className="">
+        <div className=" md:hidden">
           <a
             href="tel:+996(778)100100"
             className=" mx-2 mb-2 inline-block rounded-md border border-transparent bg-indigo-600 px-5 py-2 text-center font-medium text-white hover:bg-indigo-700"

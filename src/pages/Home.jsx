@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import Masonry from "react-masonry-css";
 
 const Home = ({ catalog }) => {
-  console.log(catalog);
   const breakpointColumnsObj = {
-    default: 4,
+    default: 3,
     1100: 3,
     700: 2,
     500: 1,
@@ -32,10 +31,18 @@ const Home = ({ catalog }) => {
 
   return (
     <section className="bg-[url('/homeBackground.png')] w-full py-10">
-      <div className="w-[90%] m-auto gap-4">
+      <div className="w-[90%] m-auto flex justify-between">
+        <div className="hidden md:block w-[15%]">
+          <p className=" text-xl font-semibold mb-6">Каталог товаров</p>
+          {catalog.map((item, index) => (
+            <Link key={index} to={`/${item.url}`}>
+              <p className="pl-4 mb-4">{item.name}</p>
+            </Link>
+          ))}
+        </div>
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
+          className="my-masonry-grid gap-4 md:w-[80%]"
           columnClassName="my-masonry-grid_column"
         >
           {items}

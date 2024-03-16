@@ -4,7 +4,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 function Carousel({ images }) {
-  console.log(images?.length);
   return (
     <>
       {images.length == 1 ? (

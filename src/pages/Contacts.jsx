@@ -11,7 +11,7 @@ const Contacts = () => {
           className="w-full border-none  h-96"
           loading="lazy"
         ></iframe>
-        <div class="text-center mt-8 text-xl">
+        <div id="contactus" name='contactus' class="text-center mt-8 text-xl">
           <p className="mt-8">
             Адрес: <span className="font-bold">ул. Логвиненко 32, офис 8</span>
           </p>

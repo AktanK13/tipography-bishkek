@@ -28,36 +28,38 @@ export default function ContactForm() {
   return (
     <section class="bg-white my-12">
       <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-        <h2 class="mb-4 text-3xl tracking-tight font-semibold text-center text-black">
+        <h2 class="sm:mb-6 lg:mb-20 text-3xl tracking-tight font-semibold text-center text-black">
           СВЯЖИТЕСЬ С НАМИ
         </h2>
         <form ref={form} onSubmit={sendEmail} class="space-y-8">
-          <div>
-            <label for="subject" class="block mb-2 text-sm font-medium ">
-              Как Вас зовут:
-            </label>
-            <input
-              type="text"
-              name="user_name"
-              id="user_name"
-              class="block p-3 w-full text-sm bg-gray-50 rounded-lg border border-gray-300  focus:ring-primary-500 focus:border-primary-500 "
-              placeholder="Ваше Имя"
-              required
-            ></input>
-          </div>
+          <div className="lg:flex lg:justify-between">
+            <div className="lg:w-[48%]">
+              <label for="subject" class="block mb-2 text-sm font-medium ">
+                Как Вас зовут:
+              </label>
+              <input
+                type="text"
+                name="user_name"
+                id="user_name"
+                class="block p-3 w-full text-sm bg-gray-50 rounded-lg border border-gray-300  focus:ring-primary-500 focus:border-primary-500 "
+                placeholder="Ваше Имя"
+                required
+              ></input>
+            </div>
 
-          <div>
-            <label for="email" class="block mb-2 text-sm font-medium ">
-              Ваш номер телефона:
-            </label>
-            <input
-              type="tel"
-              name="user_tel"
-              id="tel"
-              class=" bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-              placeholder="0(ХХХ)ХХ-ХХ-ХХ"
-              required
-            ></input>
+            <div className="lg:w-[48%]">
+              <label for="email" class="block mb-2 text-sm font-medium ">
+                Ваш номер телефона:
+              </label>
+              <input
+                type="tel"
+                name="user_tel"
+                id="tel"
+                class="block p-3 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                placeholder="0(ХХХ)ХХ-ХХ-ХХ"
+                required
+              ></input>
+            </div>
           </div>
 
           <div class="sm:col-span-2">
@@ -80,7 +82,6 @@ export default function ContactForm() {
             ОТПРАВИТЬ
           </button>
         </form>
-
 
         <TEAlert
           className="z-50 p-2  mt-24 ml-4 text-white"
