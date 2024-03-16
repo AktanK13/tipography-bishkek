@@ -125,13 +125,13 @@ const Navbar = ({ routesData }) => {
         <div className=" md:hidden">
           <a
             href="tel:+996(778)100100"
-            className=" mx-2 mb-2 inline-block rounded-md border border-transparent bg-indigo-600 px-5 py-2 text-center font-medium text-white hover:bg-indigo-700"
+            className=" nav:ml-24 navto:ml-2 mb-2 inline-block rounded-md border border-transparent bg-indigo-600 px-5 py-2 text-center font-medium text-white hover:bg-indigo-700"
           >
             Позвонить
           </a>
           <a
             href="https://wa.me/996778100100"
-            className=" mx-2 inline-block rounded-md border border-transparent  bg-[#28a745] px-5 py-2 text-center font-medium text-white hover:bg-[#378248]"
+            className=" nav:ml-24 navto:ml-2 inline-block rounded-md border border-transparent  bg-[#28a745] px-5 py-2 text-center font-medium text-white hover:bg-[#378248]"
           >
             Написать WhatsApp
           </a>
