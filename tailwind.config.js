@@ -6,6 +6,11 @@ module.exports = {
     "./node_modules/tw-elements-react/dist/js/**/*.js"
   ],
   theme: {
+    extend: {
+      zIndex: {
+        '1000': '1000',
+      }
+    },
     screens: {
       'nav': '200px',
       'navto': '400px',

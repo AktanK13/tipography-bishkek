@@ -36,7 +36,7 @@ const Navbar = ({ routesData }) => {
   return (
     <div>
       <div className=" w-full  h-[10vh] bg-[url('/background-header.jpg')]  bg-cover">
-        <div className="w-full h-full bg-opacity-60  bg-[#000]  flex  justify-center items-center">
+        <div className="w-full h-full bg-opacity-60  bg-[#212529]  flex  justify-center items-center">
           <h1 className="xsm:text-2xl sm:text-2xl md:text-4xl xl:text-5xl font-black text-white ">
             ТИПОГРАФИЯ БИШКЕК
           </h1>
@@ -45,7 +45,7 @@ const Navbar = ({ routesData }) => {
 
       <div className="" id="myHeader" />
       <div
-        className={`w-screen py-6 xsm:px-5 xl:px-24 bg-white flex justify-between shadow-md ${
+        className={`w-screen py-6 nav:px-2 xl:px-24 bg-white flex justify-between shadow-md ${
           isSticky ? "mySticky" : ""
         }`}
       >
@@ -56,7 +56,7 @@ const Navbar = ({ routesData }) => {
         </span>
 
         <ul className="hidden md:flex items-center xsm:space-x-4 lg:space-x-8">
-          <Link to="/">
+          <Link to="/" className="">
             <li className={pathname === '/' ? 'font-bold' : ''}>Главная</li>
           </Link>
           <Link to="/portfolio">
@@ -80,30 +80,30 @@ const Navbar = ({ routesData }) => {
           <GiHamburgerMenu size={28} className="mb-2" />
 
           {/* menu */}
-          <ul className="bg-[#252525] overflow-auto  h-screen w-[80vw]  z-10 pb-10 absolute top-0 -left-full group-focus:left-0 right-0 duration-150 flex flex-col space-y-3  justify-start">
-            <button className="px-10 py-8 relative mr-auto">
+          <ul className="bg-[#252525] overflow-auto  h-screen w-[70vw] z-1000 pb-10 absolute top-0 -left-full group-focus:left-0 right-0 duration-150 flex flex-col justify-start">
+            <button className="py-8 pr-8 relative m-auto">
               <div className="w-6 h-1 rotate-45 absolute bg-white"></div>
               <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
             </button>
             <Link to="/">
-              <li className="flex justify-start items-center w-full py-4 px-10 text-white hover:bg-[#2b2b2b]">
+              <li className="flex justify-start items-center w-full py-4 px-4 border-b text-white hover:bg-[#2b2b2b]">
                 <AiFillHome size={18} className="mr-2" />
                 Главная
               </li>
             </Link>
             <Link to="/portfolio">
-              <li className="flex justify-start items-center w-full py-4 px-10 text-white hover:bg-[#2b2b2b]">
+              <li className="flex justify-start items-center w-full py-4 px-4 border-b text-white hover:bg-[#2b2b2b]">
                 <GrGallery size={18} className="mr-2" />
                 Портфолио
               </li>
             </Link>
             <Link to="/about">
-              <li className="flex justify-start items-center w-full py-4 px-10 text-white hover:bg-[#2b2b2b]">
+              <li className="flex justify-start items-center w-full py-4 px-4 border-b text-white hover:bg-[#2b2b2b]">
                 <FaRegBuilding size={18} className="mr-2" />О компании
               </li>
             </Link>
             <Link to="/contacts">
-              <li className="flex justify-start items-center w-full py-4 px-10 text-white hover:bg-[#2b2b2b]">
+              <li className="flex justify-start items-center w-full py-4 px-4 text-white hover:bg-[#2b2b2b]">
                 <RiContactsBookLine size={18} className="mr-2" />
                 Контакты
               </li>
@@ -113,8 +113,8 @@ const Navbar = ({ routesData }) => {
               Каталог товаров
             </h4>
             {sortedData?.map((route, index) => (
-              <Link key={index} to={`/${route?.url}`}>
-                <li className="flex justify-start items-center w-full py-4 px-10 border-b-[1px] text-white hover:bg-[#2b2b2b]">
+              <Link key={index} to={`/${route?.url}`} className="mt-0">
+                <li className="flex justify-start w-full py-4 px-4 border-b text-white bg-[#263a44]">
                   {route?.name}
                 </li>
               </Link>
