@@ -27,7 +27,7 @@ const Home = ({ catalog }) => {
 
   return (
     <section className="bg-[url('/homeBackground.png')] w-full py-10">
-      <div className="w-[95%] m-auto flex justify-between">
+      <div className="w-[95%] xl:w-[85%] m-auto flex justify-between">
         <div className="hidden md:block w-[18%]">
           <p className=" text-xl font-semibold mb-6">Каталог товаров</p>
           {catalog.map((item, index) => (
