@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tipography-bishkek.kg/sitemap.xml

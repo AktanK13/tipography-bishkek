@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import Carousel from "../components/Carousel";
+import SmartWhatsAppButton from "../components/SmartWhatsAppButton";
 function ProductDetail({ detail }) {
   let { id } = useParams();
   const product = detail.find((product) => String(product.url) === id);
@@ -17,6 +18,9 @@ function ProductDetail({ detail }) {
           className="text-justify py-8"
           dangerouslySetInnerHTML={{ __html: product.description }}
         />
+        {/* <div className="text-center py-8">
+          <SmartWhatsAppButton serviceName={product.name} className="text-lg px-8 py-4" />
+        </div> */}
       </div>
     </div>
   );
