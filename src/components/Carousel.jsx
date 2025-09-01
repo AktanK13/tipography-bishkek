@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import OptimizedImage from "./OptimizedImage";
 
 function Carousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Предзагрузка следующего изображения
+  useEffect(() => {
+    if (images.length > 1) {
+      const nextIndex = (currentIndex + 1) % images.length;
+      const nextImage = new Image();
+      nextImage.src = `/assets/${images[nextIndex]}`;
+    }
+  }, [currentIndex, images]);
 
   // Автоматическое переключение слайдов
   useEffect(() => {
@@ -18,21 +28,21 @@ function Carousel({ images }) {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
-  };
+  }, []);
 
   if (!images || images.length === 0) {
     return <div>Нет изображений</div>;
@@ -41,11 +51,13 @@ function Carousel({ images }) {
   if (images.length === 1) {
     return (
       <div className="relative">
-        <img
-          loading="lazy"
+        <OptimizedImage
           src={`/assets/${images[0]}`}
-          className="h-auto max-w-full rounded-lg"
           alt="Изображение"
+          className="h-auto max-w-full rounded-lg"
+          placeholder={true}
+          webp={true}
+          priority={true}
         />
       </div>
     );
@@ -55,32 +67,34 @@ function Carousel({ images }) {
     <div className="relative w-full">
       {/* Основное изображение */}
       <div className="relative overflow-hidden rounded-lg">
-        <img
-          loading="lazy"
+        <OptimizedImage
           src={`/assets/${images[currentIndex]}`}
-          className="w-full h-auto transition-transform duration-500 ease-in-out"
           alt={`Слайд ${currentIndex + 1}`}
+          className="w-full h-auto"
+          placeholder={true}
+          webp={true}
+          priority={true}
         />
         
         {/* Левая кликабельная область */}
         <button
           onClick={goToPrevious}
-          className="absolute left-0 top-0 w-1/3 h-full bg-transparent hover:bg-black hover:bg-opacity-10 transition-all duration-200 cursor-pointer"
+          className="absolute left-0 top-0 w-1/6 h-full bg-transparent hover:bg-black hover:bg-opacity-10 transition-all duration-200 cursor-pointer"
           aria-label="Предыдущий слайд"
         >
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-opacity-0 hover:text-opacity-100 transition-all duration-200">
-            <MdOutlineKeyboardArrowLeft size={32} />
+            <MdOutlineKeyboardArrowLeft size={30} />
           </div>
         </button>
         
         {/* Правая кликабельная область */}
         <button
           onClick={goToNext}
-          className="absolute right-0 top-0 w-1/3 h-full bg-transparent hover:bg-black hover:bg-opacity-10 transition-all duration-200 cursor-pointer"
+          className="absolute right-0 top-0 w-1/6 h-full bg-transparent hover:bg-black hover:bg-opacity-10 transition-all duration-200 cursor-pointer"
           aria-label="Следующий слайд"
         >
           <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-opacity-0 hover:text-opacity-100 transition-all duration-200">
-            <MdKeyboardArrowRight size={32} />
+            <MdKeyboardArrowRight size={30} />
           </div>
         </button>
       </div>

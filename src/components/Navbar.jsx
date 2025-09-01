@@ -5,7 +5,7 @@ import { FaRegBuilding } from "react-icons/fa";
 import { RiContactsBookLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import logo from "../../public/assets/logo.png";
+import logo from "../../public/assets/optimized/logo.webp";
 import "../index.css";
 import { Link, useLocation  } from "react-router-dom";
 
@@ -13,9 +13,6 @@ const Navbar = ({ routesData }) => {
   const [isSticky, setSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
-  const sortedData = [...routesData].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
 
   // Закрываем мобильное меню при изменении маршрута
   useEffect(() => {
@@ -51,8 +48,8 @@ const Navbar = ({ routesData }) => {
 
   return (
     <div>
-      <div className=" w-full  h-[10vh] bg-[url('/background-header.jpg')]  bg-cover">
-        <div className="w-full h-full bg-opacity-60  bg-[#212529]  flex  justify-center items-center">
+      <div className="w-full h-[10vh] bg-[url('/background-header.jpg')] bg-cover shadow-lg">
+        <div className="w-full h-full bg-opacity-60 bg-[#212529] flex justify-center items-center">
           <h1 className="xsm:text-2xl sm:text-2xl md:text-4xl xl:text-5xl font-black text-white ">
             ТИПОГРАФИЯ БИШКЕК
           </h1>
@@ -61,7 +58,7 @@ const Navbar = ({ routesData }) => {
 
       <div className="" id="myHeader" />
       <div
-        className={`w-screen py-2 nav:px-2 xl:px-24 bg-white flex justify-between shadow-md ${
+        className={`w-screen py-2 nav:px-2 xl:px-24 bg-white flex justify-between shadow-lg border-b border-gray-200 ${
           isSticky ? "mySticky" : ""
         }`}
       >
@@ -158,7 +155,7 @@ const Navbar = ({ routesData }) => {
               <h4 className="text-white font-semibold pt-20 pb-6 px-4">
                 Каталог товаров
               </h4>
-              {sortedData?.map((route, index) => (
+              {routesData?.map((route, index) => (
                 <Link key={index} to={`/${route?.url}`} onClick={closeMobileMenu} className="mt-0">
                   <li className="flex justify-start w-full py-4 px-4 border-b text-white bg-[#263a44] hover:bg-[#2b2b2b]">
                     {route?.name}
