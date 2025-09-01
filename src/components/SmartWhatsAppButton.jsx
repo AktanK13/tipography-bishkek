@@ -20,7 +20,7 @@ const SmartWhatsAppButton = ({ serviceName = '', className = '' }) => {
       rel="noopener noreferrer"
     >
       <OptimizedImage 
-        src="/assets/whatsapp_button.png" 
+        src="/assets/optimized/whatsapp_button.png" 
         alt="WhatsApp" 
         className="w-5 h-5 mr-2"
         webp={true}

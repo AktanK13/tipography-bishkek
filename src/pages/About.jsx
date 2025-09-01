@@ -5,7 +5,7 @@ const About = () => {
     <section className="bg-[url('/homeBackground.png')] w-full py-10">
       <div className="w-[90%] m-auto flex justify-center flex-col items-center">
         <h3 className="text-center text-4xl font-medium leading-tight my-8">О компании</h3>
-        <img src="/assets/Kubariki2.jpg" alt="kubariki" className="md:max-w-[500px]" />
+        <img src="/assets/optimized/Kubariki2.webp" alt="kubariki" className="md:max-w-[500px]" />
         <h3 className=" text-center text-4xl font-medium leading-tight mb-4 mt-8">О нас</h3>
         <p className="mb-4">
           На данный момент парк нашего производства оснащен широким спектром

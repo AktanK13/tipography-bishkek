@@ -8,7 +8,7 @@ const footer = () => {
           <div className="">
             <h6
               className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-              <img src="/assets/logo-white.png" alt="" className='w-[300px] xl:w-[200px]' />
+              <img src="/assets/optimized/logo-white.png" alt="" className='w-[300px] xl:w-[200px]' />
               {/* <a
                 href="https://wa.me/996778100100"
                 className="ml-4 inline-flex items-center justify-center w-10 h-10 bg-[#25D366] text-white rounded-full hover:bg-[#128C7E] transition-colors duration-200"

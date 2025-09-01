@@ -89,7 +89,7 @@ const Home = ({ catalog }) => {
                                       {/* Изображение */}
              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
                <img
-                 src="/assets/banner.jpeg"
+                 src="/assets/optimized/banner.webp"
                  alt="Технологии печати"
                  className="w-full max-w-md lg:max-w-none h-64 lg:h-96 object-contain rounded-lg"
                />

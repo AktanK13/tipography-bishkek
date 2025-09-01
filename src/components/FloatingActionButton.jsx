@@ -32,7 +32,7 @@ const FloatingActionButton = () => {
         aria-label="Связаться в WhatsApp"
       >
         <OptimizedImage 
-          src="/assets/whatsapp_button.png" 
+          src="/assets/optimized/whatsapp_button.png" 
           alt="WhatsApp" 
           className="w-14 h-14"
           webp={true}
@@ -52,7 +52,7 @@ const FloatingActionButton = () => {
         aria-label="Позвонить"
       >
         <OptimizedImage 
-          src="/assets/call_button.png" 
+          src="/assets/optimized/call_button.png" 
           alt="Позвонить" 
           className="w-14 h-14"
           webp={true}

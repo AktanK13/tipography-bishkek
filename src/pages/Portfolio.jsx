@@ -16,7 +16,7 @@ const Portfolio = ({ catalog }) => {
       className="rounded-lg max-w-fit max-h-fit mb-4 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
     >
       <OptimizedImage
-        src={`/assets/${item.images[0]}`}
+        src={`/assets/optimized/${item.images[0]}`}
         alt={item.name}
         className="rounded-t-lg w-full h-auto"
         placeholder={true}

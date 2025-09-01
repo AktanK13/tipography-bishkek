@@ -52,7 +52,7 @@ function Carousel({ images }) {
     return (
       <div className="relative">
         <OptimizedImage
-          src={`/assets/${images[0]}`}
+          src={`/assets/optimized/${images[0]}`}
           alt="Изображение"
           className="h-auto max-w-full rounded-lg"
           placeholder={true}
@@ -68,7 +68,7 @@ function Carousel({ images }) {
       {/* Основное изображение */}
       <div className="relative overflow-hidden rounded-lg">
         <OptimizedImage
-          src={`/assets/${images[currentIndex]}`}
+          src={`/assets/optimized/${images[currentIndex]}`}
           alt={`Слайд ${currentIndex + 1}`}
           className="w-full h-auto"
           placeholder={true}
