@@ -38,8 +38,8 @@ const footer = () => {
             </p>
             <p className="mb-4">
               <a className="text-white dark:text-neutral-200"
-              href='mailto:Bishkekprint@mail.ru'
-              >E-mail: Bishkekprint@mail.ru
+              href='mailto:office.bish@mail.ru'
+              >E-mail: office.bish@mail.ru
               </a>
             </p>
           </div>

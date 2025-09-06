@@ -23,7 +23,7 @@ const Contacts = () => {
           </p>
           <p className="mt-8 border-b-2 pb-12">
             Email:{" "}
-            <span className="font-bold">Bishkekprint@mail.ru</span>
+            <span className="font-bold">office.bish@mail.ru</span>
           </p>
         </div>
         <ContactForm/>
