@@ -9,7 +9,7 @@ const FloatingActionButton = () => {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
+    <div className="fixed right-6 bottom-1/4 z-50 flex flex-col gap-4">
       {/* WhatsApp Button */}
       <a
         href={whatsAppUrl}
