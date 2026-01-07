@@ -22,6 +22,7 @@ const Portfolio = ({ catalog }) => {
         className="rounded-t-lg w-full h-auto"
         placeholder={true}
         webp={true}
+        priority={index < 12}
         sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
       />
     </div>

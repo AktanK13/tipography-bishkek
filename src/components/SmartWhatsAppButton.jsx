@@ -24,6 +24,7 @@ const SmartWhatsAppButton = ({ serviceName = '', className = '' }) => {
         alt="WhatsApp" 
         className="w-5 h-5 mr-2"
         webp={true}
+        priority={true}
       />
       Заказать {serviceName ? serviceName.toLowerCase() : ''}
     </a>

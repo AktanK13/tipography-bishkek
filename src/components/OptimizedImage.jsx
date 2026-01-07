@@ -7,6 +7,7 @@ const OptimizedImage = ({
   placeholder = true,
   webp = true,
   sizes = '100vw',
+  priority = false, // Если true, загружается с высоким приоритетом (не lazy)
   ...props 
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -135,7 +136,8 @@ const OptimizedImage = ({
         className={`transition-opacity duration-300 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         } ${className}`}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         sizes={sizes}
         onLoad={handleLoad}
         onError={handleError}

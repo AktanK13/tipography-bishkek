@@ -58,6 +58,7 @@ function Carousel({ images }) {
           className="h-auto max-w-full rounded-lg"
           placeholder={true}
           webp={true}
+          priority={true}
         />
       </div>
     );
@@ -73,6 +74,7 @@ function Carousel({ images }) {
           className="w-full h-auto"
           placeholder={true}
           webp={true}
+          priority={currentIndex === 0}
         />
         
         {/* Левая кликабельная область */}
