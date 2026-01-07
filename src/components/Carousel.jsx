@@ -10,7 +10,9 @@ function Carousel({ images }) {
     if (images.length > 1) {
       const nextIndex = (currentIndex + 1) % images.length;
       const nextImage = new Image();
-      nextImage.src = `/assets/${images[nextIndex]}`;
+      // Предзагружаем уже оптимизированную WebP-версию
+      const baseName = images[nextIndex].replace(/\.[^.]+$/, '');
+      nextImage.src = `/assets/optimized/${baseName}.webp`;
     }
   }, [currentIndex, images]);
 

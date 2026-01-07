@@ -1,6 +1,7 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import { Link } from "react-router-dom";
+import OptimizedImage from "../components/OptimizedImage";
 import SEO from "../components/SEO";
 
 const Home = ({ catalog }) => {
@@ -20,11 +21,12 @@ const Home = ({ catalog }) => {
         <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
           {/* Изображение */}
           <div className="relative overflow-hidden">
-            <img
-              loading="lazy"
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
-              src={`/assets/optimized/${item.images[0]}`}
+            <OptimizedImage
+              src={`/assets/${item.images[0]}`}
               alt={item.name}
+              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+              placeholder={true}
+              webp={true}
             />
             {/* Градиентный оверлей */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
