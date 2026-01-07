@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const OptimizedImage = ({ 
   src, 
@@ -7,7 +7,6 @@ const OptimizedImage = ({
   placeholder = true,
   webp = true,
   sizes = '100vw',
-  priority = false,
   ...props 
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -76,20 +75,6 @@ const OptimizedImage = ({
     }
   };
 
-  // Предзагрузка для приоритетных изображений
-  useEffect(() => {
-    if (priority && currentSrc) {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = currentSrc;
-      document.head.appendChild(link);
-      
-      return () => {
-        document.head.removeChild(link);
-      };
-    }
-  }, [priority, currentSrc]);
 
   if (hasError) {
     return (
@@ -116,7 +101,7 @@ const OptimizedImage = ({
         className={`transition-opacity duration-300 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         } ${className}`}
-        loading={priority ? 'eager' : 'lazy'}
+        loading="lazy"
         sizes={sizes}
         onLoad={handleLoad}
         onError={handleError}

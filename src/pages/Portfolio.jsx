@@ -1,6 +1,7 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import OptimizedImage from "../components/OptimizedImage";
+import SEO from "../components/SEO";
 
 const Portfolio = ({ catalog }) => {
   const breakpointColumnsObj = {
@@ -22,13 +23,39 @@ const Portfolio = ({ catalog }) => {
         placeholder={true}
         webp={true}
         sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
-        priority={index < 8} // Приоритет для первых 8 изображений
       />
     </div>
   ));
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Портфолио типографии Бишкек",
+    "description": "Примеры работ нашей типографии в Бишкеке. Печать визиток, буклетов, брошюр, листовок и другой полиграфической продукции.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": catalog?.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": item.name,
+          "description": `Примеры печати ${item.name.toLowerCase()} в Бишкеке`
+        }
+      }))
+    }
+  };
+
   return (
-    <section className="bg-[url('/homeBackground.png')] w-full py-10">
+    <>
+      <SEO 
+        title="Портфолио - Типография Бишкек"
+        description="Портфолио работ типографии в Бишкеке. Примеры печати визиток, буклетов, брошюр, листовок, календарей и другой полиграфической продукции."
+        keywords="портфолио типографии Бишкек, примеры работ типографии, печать Бишкек портфолио, полиграфия Бишкек примеры"
+        canonical="/portfolio"
+        structuredData={structuredData}
+      />
+      <section className="bg-[url('/homeBackground.png')] w-full py-10">
       <div className="w-[90%] m-auto">
         <Masonry
           breakpointCols={breakpointColumnsObj}
@@ -39,6 +66,7 @@ const Portfolio = ({ catalog }) => {
         </Masonry>
       </div>
     </section>
+    </>
   );
 };
 

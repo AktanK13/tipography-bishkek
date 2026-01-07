@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import React, { useCallback, useEffect, useState } from "react";
+import { MdKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import OptimizedImage from "./OptimizedImage";
 
 function Carousel({ images }) {
@@ -57,7 +56,6 @@ function Carousel({ images }) {
           className="h-auto max-w-full rounded-lg"
           placeholder={true}
           webp={true}
-          priority={true}
         />
       </div>
     );
@@ -73,7 +71,6 @@ function Carousel({ images }) {
           className="w-full h-auto"
           placeholder={true}
           webp={true}
-          priority={true}
         />
         
         {/* Левая кликабельная область */}

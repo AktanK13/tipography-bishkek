@@ -1,20 +1,45 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 const About = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Типография Бишкек",
+      "description": "Профессиональная типография в Бишкеке с полным спектром полиграфических услуг",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Логвиненко, 59",
+        "addressLocality": "Бишкек",
+        "addressCountry": "KG"
+      }
+    }
+  };
+
   return (
-    <section className="bg-[url('/homeBackground.png')] w-full py-10">
+    <>
+      <SEO 
+        title="О компании - Типография Бишкек"
+        description="О нашей типографии в Бишкеке. Широкий спектр полиграфических услуг, современное оборудование, качество и соблюдение сроков. Узнайте больше о нашей компании."
+        keywords="типография Бишкек о компании, полиграфия Бишкек, типография в Бишкеке, о типографии"
+        canonical="/about"
+        structuredData={structuredData}
+      />
+      <section className="bg-[url('/homeBackground.png')] w-full py-10">
       <div className="w-[90%] m-auto flex justify-center flex-col items-center">
-        <h3 className="text-center text-4xl font-medium leading-tight my-8">О компании</h3>
+        <h1 className="text-center text-4xl font-medium leading-tight my-8">О компании - Типография Бишкек</h1>
         <img src="/assets/optimized/Kubariki2.webp" alt="kubariki" className="md:max-w-[500px]" />
-        <h3 className=" text-center text-4xl font-medium leading-tight mb-4 mt-8">О нас</h3>
+        <h2 className=" text-center text-4xl font-medium leading-tight mb-4 mt-8">О нас</h2>
         <p className="mb-4">
           На данный момент парк нашего производства оснащен широким спектром
           оборудования. Мы предлагаем полный спектр полиграфических услуг от
           дизайна до упаковки готовой продукции.
         </p>
-        <div class="col-12 col-md-8">
-          <h2 class="text-center text-4xl font-medium leading-tight mb-4 mt-8">Почему мы?</h2>
-          <ul class="text-left list-disc px-6">
+        <div className="col-12 col-md-8">
+          <h2 className="text-center text-4xl font-medium leading-tight mb-4 mt-8">Почему мы?</h2>
+          <ul className="text-left list-disc px-6">
             <li>
               <strong>Соблюдение договоренностей.</strong> Адекватно оценивать
               свои возможности и всегда выполнять договоренности о качестве,
@@ -42,6 +67,7 @@ const About = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

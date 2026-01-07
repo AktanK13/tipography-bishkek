@@ -8,7 +8,7 @@ const footer = () => {
           <div className="">
             <h6
               className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-              <img src="/assets/optimized/logo-white.png" alt="" className='w-[300px] xl:w-[200px]' />
+              <img src="/assets/optimized/logo-white.webp" alt="" className='w-[300px] xl:w-[200px]' />
               {/* <a
                 href="https://wa.me/996778100100"
                 className="ml-4 inline-flex items-center justify-center w-10 h-10 bg-[#25D366] text-white rounded-full hover:bg-[#128C7E] transition-colors duration-200"
@@ -26,6 +26,9 @@ const footer = () => {
               className="mb-4 flex justify-center text-xl font-bold uppercase md:justify-start">
               Контакты
             </h6>
+            <p className="mb-4">
+              <span className="text-white dark:text-neutral-200">Адрес: г. Бишкек, ул. Логвиненко, 59</span>
+            </p>
             <p className="mb-4">
               <a className="text-white dark:text-neutral-200"
               href='tel:+996(778)100100'
@@ -49,10 +52,16 @@ const footer = () => {
               Режим работы
             </h6>
             <p className="mb-4 flex items-center justify-center md:justify-start">
-            С пн-пт: 9:00 - 18:00
+            Пн-Пт с 9-00 до 18-00
             </p>
             <p className="mb-4 flex items-center justify-center md:justify-start">
-            Сб: 10:00 - 16:00
+            Обед с 12-00 до 13-00
+            </p>
+            <p className="mb-4 flex items-center justify-center md:justify-start">
+            Сб с 10-00 до 14-00
+            </p>
+            <p className="mb-4 flex items-center justify-center md:justify-start">
+            Вс - выходной
             </p>
           </div>
         </div>
