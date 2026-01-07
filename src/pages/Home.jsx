@@ -19,11 +19,11 @@ const Home = ({ catalog }) => {
       <Link to={`/${item.url}`} className="block">
         <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
           {/* Изображение */}
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden aspect-square">
             <OptimizedImage
               src={`/assets/${item.images[0]}`}
               alt={item.name}
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               placeholder={true}
               webp={true}
               priority={index < 9}
@@ -34,7 +34,7 @@ const Home = ({ catalog }) => {
           
           {/* Контент карточки */}
           <div className="p-3 sm:p-4">
-            <h5 className="text-base sm:text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+            <h5 className="text-base sm:text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
               {item.name}
             </h5>
           </div>

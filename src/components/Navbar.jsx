@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
-import { GrGallery } from "react-icons/gr";
 import { FaRegBuilding } from "react-icons/fa";
-import { RiContactsBookLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { GrGallery } from "react-icons/gr";
 import { IoClose } from "react-icons/io5";
+import { RiContactsBookLine } from "react-icons/ri";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../public/assets/optimized/logo.webp";
 import "../index.css";
-import { Link, useLocation  } from "react-router-dom";
 
 const Navbar = ({ routesData }) => {
   const [isSticky, setSticky] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = ({ routesData }) => {
 
       <div className="" id="myHeader" />
       <div
-        className={`w-screen py-2 nav:px-2 xl:px-24 bg-white flex justify-between shadow-lg border-b border-gray-200 ${
+        className={`w-screen py-2 nav:px-2 xl:px-24 bg-white flex justify-between items-center shadow-lg border-b border-gray-200 ${
           isSticky ? "mySticky" : ""
         }`}
       >
@@ -91,21 +91,26 @@ const Navbar = ({ routesData }) => {
           <Link to="/contacts">
             <li className={pathname === '/contacts' | pathname === '/contacts/' ? 'font-bold' : ''}>Контакты</li>
           </Link>
-          <a href="/contacts/#contactus"
+          <Link to="/contacts#contactus"
             className="rounded-md border border-transparent bg-red-700 px-5 py-2 text-center font-medium text-white hover:bg-red-600"
           >
             НАПИСАТЬ НАМ
-          </a>
+          </Link>
         </ul>
 
         {/* hamburger menu */}
-        <button 
-          className="md:hidden" 
-          onClick={toggleMobileMenu}
-          aria-label="Открыть меню"
-        >
-          <GiHamburgerMenu size={28} className="mb-2" />
-        </button>
+        <div className="flex items-center md:hidden w-full relative">
+          <button 
+            onClick={toggleMobileMenu}
+            aria-label="Открыть меню"
+            className="absolute left-0"
+          >
+            <GiHamburgerMenu size={28} />
+          </button>
+          <p className="text-sm font-medium text-black text-center w-full pl-10">
+            Закажи и оплати онлайн и получи доставку.
+          </p>
+        </div>
 
         {/* mobile menu overlay */}
         {isMobileMenuOpen && (

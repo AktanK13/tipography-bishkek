@@ -1,32 +1,34 @@
-import { Routes, Route, Navigate, useLocation  } from "react-router-dom";
 import { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import FloatingActionButton from "./components/FloatingActionButton";
+import Footer from "./components/footer";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Portfolio from "./pages/Portfolio";
+import { routesData } from "./data/routesData";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
+import Home from "./pages/Home";
+import Portfolio from "./pages/Portfolio";
 import ProductDetail from "./pages/ProductDetail";
-import Footer from "./components/footer";
-import FloatingActionButton from "./components/FloatingActionButton";
-import { routesData } from "./data/routesData";
 
-// Компонент для скролла вверх при навигации
+// Компонент для скролла при навигации
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   
   useEffect(() => {
-    // Принудительный скролл вверх при изменении маршрута
+    // Если есть хэш, скроллим к элементу
+    if (hash) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    
+    // Иначе скроллим вверх
     window.scrollTo(0, 0);
-    
-    // Дополнительная проверка через небольшую задержку
-    const timer = setTimeout(() => {
-      if (window.pageYOffset > 0) {
-        window.scrollTo(0, 0);
-      }
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [pathname]);
+  }, [pathname, hash]);
   
   return null;
 }
