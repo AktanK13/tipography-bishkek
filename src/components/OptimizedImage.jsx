@@ -12,43 +12,54 @@ const OptimizedImage = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState('');
+  const [fallbackAttempted, setFallbackAttempted] = useState(false);
   const imgRef = useRef(null);
 
   useEffect(() => {
     if (!src) return;
 
-    // Проверяем поддержку WebP
+    // Проверяем поддержку WebP более надежным способом
     const checkWebPSupport = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = 1;
-      canvas.height = 1;
-      return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1;
+        canvas.height = 1;
+        const result = canvas.toDataURL('image/webp');
+        return result.indexOf('data:image/webp') === 0;
+      } catch (e) {
+        return false;
+      }
     };
 
-    const supportsWebP = checkWebPSupport();
+    const supportsWebP = webp && checkWebPSupport();
     
     // Определяем оптимальный источник изображения
     let imageSrc = src;
     
-    if (webp && supportsWebP) {
+    // Нормализуем путь - убираем двойные слеши
+    imageSrc = imageSrc.replace(/\/+/g, '/');
+    
+    if (supportsWebP) {
       // Если изображение не в папке optimized, сначала переводим в optimized
       if (!src.includes('optimized')) {
         const optimizedSrc = src.replace('/assets/', '/assets/optimized/');
         // Затем заменяем расширение на .webp
-        const webpSrc = optimizedSrc.replace(/\.[^.]+$/, '.webp');
-        imageSrc = webpSrc;
+        const baseName = optimizedSrc.replace(/\.[^.]+$/, '');
+        imageSrc = baseName + '.webp';
       } else {
         // Если уже в optimized, просто заменяем расширение на .webp
-        const webpSrc = src.replace(/\.[^.]+$/, '.webp');
-        imageSrc = webpSrc;
+        const baseName = src.replace(/\.[^.]+$/, '');
+        imageSrc = baseName + '.webp';
       }
     } else if (!src.includes('optimized')) {
       // Если WebP не поддерживается, используем оптимизированную версию в оригинальном формате
-      const optimizedSrc = src.replace('/assets/', '/assets/optimized/');
-      imageSrc = optimizedSrc;
+      imageSrc = src.replace('/assets/', '/assets/optimized/');
     }
 
     setCurrentSrc(imageSrc);
+    setIsLoaded(false);
+    setHasError(false);
+    setFallbackAttempted(false);
   }, [src, webp]);
 
   const handleLoad = () => {
@@ -57,22 +68,32 @@ const OptimizedImage = ({
   };
 
   const handleError = () => {
-    if (currentSrc.includes('.webp')) {
-      // Если WebP не загрузился, пробуем оптимизированную версию в оригинальном формате
-      const fallbackSrc = currentSrc.replace('.webp', '').replace(/\.[^.]+$/, '');
-      const originalExt = src.split('.').pop();
-      const optimizedFallback = fallbackSrc + '.' + originalExt;
-      setCurrentSrc(optimizedFallback);
-      setHasError(false);
-    } else if (currentSrc.includes('optimized') && !currentSrc.includes('.webp')) {
-      // Если оптимизированная версия не загрузилась, пробуем оригинал
-      const fallbackSrc = src;
-      setCurrentSrc(fallbackSrc);
-      setHasError(false);
-    } else {
-      setHasError(true);
-      setIsLoaded(false);
+    if (!fallbackAttempted) {
+      setFallbackAttempted(true);
+      
+      if (currentSrc.includes('.webp')) {
+        // Если WebP не загрузился, пробуем оптимизированную версию в оригинальном формате
+        const baseName = currentSrc.replace('.webp', '');
+        // Получаем оригинальное расширение из исходного пути
+        const originalExt = src.split('.').pop();
+        const optimizedFallback = baseName + '.' + originalExt;
+        setCurrentSrc(optimizedFallback);
+        setHasError(false);
+        return;
+      }
+      
+      if (currentSrc.includes('optimized') && !currentSrc.includes('.webp')) {
+        // Если оптимизированная версия не загрузилась, пробуем оригинал
+        const originalSrc = src;
+        setCurrentSrc(originalSrc);
+        setHasError(false);
+        return;
+      }
     }
+    
+    // Если все fallback'и не сработали
+    setHasError(true);
+    setIsLoaded(false);
   };
 
 
@@ -80,6 +101,19 @@ const OptimizedImage = ({
     return (
       <div className={`bg-gray-200 flex items-center justify-center ${className}`}>
         <span className="text-gray-500 text-sm">Ошибка загрузки</span>
+      </div>
+    );
+  }
+
+  // Не рендерим изображение, пока путь не установлен
+  if (!currentSrc) {
+    return (
+      <div className={`relative ${className}`}>
+        {placeholder && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+            <div className="text-gray-400 text-sm">Загрузка...</div>
+          </div>
+        )}
       </div>
     );
   }
