@@ -3,7 +3,7 @@ import React from 'react'
 const footer = () => {
   return (
     <footer className="bg-[url('/prism.png')] text-center text-white dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
-      <div className="xsm:mx-6 xl:mx-28 py-10 text-center md:text-left">
+      <div className="xsm:mx-6 xl:mx-28 pt-10 pb-4 md:py-10 text-center md:text-left">
         <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div className="">
             <h6

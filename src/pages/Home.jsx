@@ -8,11 +8,10 @@ const Home = ({ catalog }) => {
  
   const breakpointColumnsObj = {
     default: 3,
-    1200: 3,
-    1024: 2,
+    1024: 3,
     768: 2,
-    640: 1,
-    480: 1,
+    640: 2,
+    480: 2,
   };
 
   var items = catalog?.map((item, index) => (
@@ -34,16 +33,9 @@ const Home = ({ catalog }) => {
           
           {/* Контент карточки */}
           <div className="p-3 sm:p-4">
-            <div className="flex items-center justify-between">
-              <h5 className="text-base sm:text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                {item.name}
-              </h5>
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
+            <h5 className="text-base sm:text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+              {item.name}
+            </h5>
           </div>
           
 
@@ -162,7 +154,7 @@ const Home = ({ catalog }) => {
         <div className="md:flex-1">
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid gap-2"
+            className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
             {items}
