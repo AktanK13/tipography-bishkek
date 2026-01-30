@@ -107,7 +107,7 @@ const Navbar = ({ routesData }) => {
           >
             <GiHamburgerMenu size={28} />
           </button>
-          <p className="text-sm font-medium text-black text-center w-full pl-10">
+          <p className="text-sm font-semibold text-black text-center w-full pl-10">
             Закажи и оплати онлайн и получи доставку.
           </p>
         </div>
